@@ -78,7 +78,7 @@ function orderByYear(array) {
      return 1;
    }else if ((a.year - b.year) < 0) {
      return -1;
-   //En caso de que los años coincida se hace el condicional con los títulos
+   //En caso de que los años coincidan se hace el condicional con los títulos
    }else if (a.year === b.year) {
      if (a.title > b.title){
       return 1;
@@ -107,9 +107,38 @@ return result;
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
-
+/* Fuentes de consulta: 
+  Extract numbers from string: https://stackoverflow.com/questions/42532450/extract-number-from-string-javascript & https://stackoverflow.com/questions/8408563/getting-the-last-number-in-a-string-javascript 
+  .parseInt: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/parseInt 
+  RegExp: https://eloquentjavascript.net/09_regexp.html
+  isNaN(): https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/isNaN   */
+function hoursToMinutes(array) {
+  //Crear una función para extraer los números que aparecen en la propiedad "duration" y convertir las horas en minutos. Como es una string se tienen que convertir en números con .parseInt().
+  function convertToMinutes(property){
+    const hoursInMinutes = parseInt(property.match(/[0-9](?=h)/), property.match(/[0-9]+[h*]/)) *60; //Buscar los números que vayan seguidos de "h", convertirlos en Int y multiplicarlos por 60(minutos en una hora)
+    let minutes = parseInt(property.match(/[0-9]+[min*]/g), property.match(/[0-9]+[min*]/g)); //Bucar los números que vayan seguidos de "min" y convertirlos en Int
+      if (isNaN(minutes)) { //En caso de que no se especifiquen los minutos dará error, con isNaN() se determina si hay número o no
+        minutes = 0;
+      }
+    const result = hoursInMinutes + minutes; 
+    console.log (result)
+    return result; 
+  }
+  const durationInMinutes = array.map(function(movie) {
+    return {
+        title: movie.title,
+        year: movie.year,
+        director: movie.director,
+        duration: convertToMinutes(movie.duration),
+        genre: movie.genre,
+        score: movie.score
+    };
+  });
+  const result = durationInMinutes;
+  console.log ("EXERCISE 7->", result); 
+  return result; 
 }
+
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
