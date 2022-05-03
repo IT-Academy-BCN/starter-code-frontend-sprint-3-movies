@@ -14,8 +14,9 @@ function getAllDirectors(array) {
 en este caso el valor del parámetro "director" coincide con el valor de la propiedad "director" de la array*/
 function getMoviesFromDirector(array, director) {
  const result = array.filter(movie => movie.director == director);
+ //console.log("Exercise 2 ", result);
  return result; 
-}
+} 
 
 // Exercise 3: Calculate the average of the films of a given director.
 /*Creamos una función de moviesAverage que se podrá utilizar para hacer la media de la puntuación teniendo en cuenta cualquier propiedad del objeto (director, género, título...)*/
@@ -33,7 +34,7 @@ function moviesAverageOfDirector(array, director) {
   const directorFilms = getMoviesFromDirector(array, director);
   //Del array que nos crea la función anterior, extraemos únicamente el valor de las propiedad "score" de cada objeto del array
   const result = moviesAverage(directorFilms);
-  console.log ("EXERCISE 3 ->", result.toFixed(2)); // .toFixed(2) sirve para limitar los decimales a dos cifras
+  //console.log ("EXERCISE 3 ->", result.toFixed(2)); // .toFixed(2) sirve para limitar los decimales a dos cifras
   return result; 
 }
 
@@ -60,7 +61,7 @@ function orderAlphabetically(array) {
 //Extraer con .slice los 20 primeros elementos de la array. Con (0,20) extraerá desde el elemento con índice 0 hasta el 19 de la array.
 //Fuente de consulta .slice: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
   const result = sortedArray.slice(0,20);
-  console.log ("EXERCISE 4 ->", result);
+ // console.log ("EXERCISE 4 ->", result);
   return result;              
 }
 
@@ -89,7 +90,7 @@ function orderByYear(array) {
      }
    }
  });
-  console.log ("EXERCISE 5 ->", result);
+  //console.log ("EXERCISE 5 ->", result);
   return result;    
 }
 
@@ -102,7 +103,7 @@ function moviesAverageByCategory(array, genre) {
   //Utilizamos la función de moviesAverage del ejercicio 3 para extraer el valor de "score" y hacer la media.
   const result = moviesAverage(scoredMovies);
  
-console.log ("EXERCISE 6 ->", result.toFixed(2)); // .toFixed(2) sirve para limitar los decimales a dos cifras
+//console.log ("EXERCISE 6 ->", result.toFixed(2)); // .toFixed(2) sirve para limitar los decimales a dos cifras
 return result; 
 }
 
@@ -121,7 +122,6 @@ function hoursToMinutes(array) {
         minutes = 0;
       }
     const result = hoursInMinutes + minutes; 
-    console.log (result)
     return result; 
   }
   const durationInMinutes = array.map(function(movie) {
@@ -135,14 +135,27 @@ function hoursToMinutes(array) {
     };
   });
   const result = durationInMinutes;
-  console.log ("EXERCISE 7->", result); 
+  //console.log ("EXERCISE 7->", result); 
   return result; 
 }
 
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+/* Fuente de consulta "".reduce en una matriz de objetos": https://www.youtube.com/watch?v=6rNIY7W8IZM */
+function bestFilmOfYear(array, year) {
+  const arrayByYear = array.filter(movie => movie.year === year);
+  const bestFilm = arrayByYear.reduce(function(prev, current) { //prev es el acumulador y va acumulando el resultado que cumple la condición del "if" de dentro de la función
+    return (prev.score > current.score) ? prev : current
+  });
+  /* Se puede hacer así para que sea más conciso 
+    const result = array
+    .filter (movie => movie.year === year)
+    .reduce ((prev, current) => (prev.score > current.score) ? prev : current)
+ */
+  const bestFilmArr = [];
+  const result = bestFilmArr.concat(bestFilm); // .push() añade el elemento al final del array y retorna la longitud del array, en cambio .concat() une los arrays
+console.log("EXERCISE 8 ", result);
+return result;
 }
 
 
@@ -160,3 +173,33 @@ if (typeof module !== 'undefined') {
     bestFilmOfYear,
   };
 }
+
+
+
+/* Hola!
+En el ejercicio 8 recibo este mensaje de error y no sé qué significa:
+
+Expected: [32m[{"director": "Stanley Kubrick", "duration": "1h 28min", "genre": ["Drama", "War"], "score": 10, "title": "Film1", "year": 1957}][39m
+Received: [31m{"director": "Stanley Kubrick", "duration": "1h 28min", "genre": ["Drama", "War"], "score": 10, "title": "Film1", "year": 1957}[39m
+
+¿Qué es "32m" o dónde podría encontrar qué tipo de error es? Yo interpreto que tengo que devolver una Array con un Object, pero si devuelve la Array con el Object, me sale este error:
+
+Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+[32m- Expected - 13[39m
+[31m+ Received + 1[39m
+
+[32m- Array [[39m
+[32m- Object {[39m
+[32m- "director": "Stanley Kubrick",[39m
+[32m- "duration": "1h 28min",[39m
+[32m- "genre": Array [[39m
+[32m- "Drama",[39m
+[32m- "War",[39m
+[32m- ],[39m
+[32m- "score": 10,[39m
+[32m- "title": "Film1",[39m
+[32m- "year": 1957,[39m
+[32m- },[39m
+[32m- ][39m
+[31m+ Array [][39m */
