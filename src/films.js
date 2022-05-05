@@ -54,7 +54,7 @@ function orderAlphabetically(array) {
 }
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {
+function orderByYear(array) {
   let moviesCopy = [...array];
   let sortedMovies = moviesCopy.sort((a, b) => {
     if (a.year < b.year) {
@@ -80,7 +80,7 @@ function orderByYear() {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+function moviesAverageByCategory(array, category) {
   let moviesFromCategory = array.filter((item) =>
     item.genre.includes(category)
   );
@@ -91,7 +91,7 @@ function moviesAverageByCategory() {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function hoursToMinutes(array) {
   let clean = array.map((item) => ({
     ...item,
     duration: toMinutes(item.duration)
@@ -113,7 +113,17 @@ const toMinutes = (duration) => {
 };
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {}
+function bestFilmOfYear(array, year) {
+  let allMoviesFromYear = array.filter((item) => item.year === year);
+  let allScoresFromYear = getScores(allMoviesFromYear);
+  let greatestScore = Math.max(...allScoresFromYear);
+
+  let bestMovie = allMoviesFromYear.filter(
+    (item) => item.score === greatestScore
+  );
+
+  return bestMovie;
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
