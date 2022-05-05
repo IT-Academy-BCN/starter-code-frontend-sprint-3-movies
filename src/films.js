@@ -11,7 +11,27 @@ function getMoviesFromDirector(array, director) {
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
-function moviesAverageOfDirector(array, director) {}
+function moviesAverageOfDirector(array, director) {
+  let moviesFromDirector = getMoviesFromDirector(array, director);
+  let scoresFromDirector = getScores(moviesFromDirector);
+  let averageFromDirector = getAverageScore(scoresFromDirector);
+
+  return Number(averageFromDirector.toFixed(2));
+}
+
+// Estas son algunas funciones que reutilizo en otros ejercicios
+const getScores = (movies) => movies.map((movie) => movie.score);
+const getAverageScore = (arrScores) => {
+  let cleanScores = arrScores.filter(
+    (item) => !Number.isNaN(item) && item !== ''
+  );
+  let averageScore =
+    cleanScores.reduce(
+      (prevScore, currentScore) => prevScore + currentScore,
+      0
+    ) / cleanScores.length;
+  return averageScore;
+};
 
 // Exercise 4:  Alphabetic order by title
 function orderAlphabetically(array) {}
