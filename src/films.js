@@ -154,7 +154,7 @@ function bestFilmOfYear(array, year) {
  */
   const bestFilmArr = [];
   const result = bestFilmArr.concat(bestFilm); // .push() añade el elemento al final del array y retorna la longitud del array, en cambio .concat() une los arrays
-console.log("EXERCISE 8 ", result);
+//console.log("EXERCISE 8 ", result);
 return result;
 }
 
@@ -173,33 +173,3 @@ if (typeof module !== 'undefined') {
     bestFilmOfYear,
   };
 }
-
-
-
-/* Hola!
-En el ejercicio 8 recibo este mensaje de error y no sé qué significa:
-
-Expected: [32m[{"director": "Stanley Kubrick", "duration": "1h 28min", "genre": ["Drama", "War"], "score": 10, "title": "Film1", "year": 1957}][39m
-Received: [31m{"director": "Stanley Kubrick", "duration": "1h 28min", "genre": ["Drama", "War"], "score": 10, "title": "Film1", "year": 1957}[39m
-
-¿Qué es "32m" o dónde podría encontrar qué tipo de error es? Yo interpreto que tengo que devolver una Array con un Object, pero si devuelve la Array con el Object, me sale este error:
-
-Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
-
-[32m- Expected - 13[39m
-[31m+ Received + 1[39m
-
-[32m- Array [[39m
-[32m- Object {[39m
-[32m- "director": "Stanley Kubrick",[39m
-[32m- "duration": "1h 28min",[39m
-[32m- "genre": Array [[39m
-[32m- "Drama",[39m
-[32m- "War",[39m
-[32m- ],[39m
-[32m- "score": 10,[39m
-[32m- "title": "Film1",[39m
-[32m- "year": 1957,[39m
-[32m- },[39m
-[32m- ][39m
-[31m+ Array [][39m */
