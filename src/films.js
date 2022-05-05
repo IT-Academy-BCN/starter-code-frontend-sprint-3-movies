@@ -34,7 +34,24 @@ const getAverageScore = (arrScores) => {
 };
 
 // Exercise 4:  Alphabetic order by title
-function orderAlphabetically(array) {}
+function orderAlphabetically(array) {
+  let moviesCopy = [...array];
+  let sortedMovies = moviesCopy.sort((a, b) => {
+    const titleA = a.title.toUpperCase();
+    const titleB = b.title.toUpperCase();
+    if (titleA < titleB) {
+      return -1;
+    }
+    if (titleA > titleB) {
+      return 1;
+    }
+    return 0;
+  });
+
+  let firstTwentyMovies = sortedMovies.slice(0, 20).map((movie) => movie.title);
+
+  return firstTwentyMovies;
+}
 
 // Exercise 5: Order by year, ascending
 function orderByYear() {}
