@@ -28,15 +28,16 @@ function moviesAverageOfDirector(array, director) {
 function orderAlphabetically(array) {
   const titles = array.map(movie => movie.title);
   let result = titles.sort();
-  console.log("EXERCISE 4 ->", result);
+  console.log("EXERCISE 4 ->", result.SPLI);
   return result.splice(0, 20);
 }
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {
-
+function orderByYear(array) {
+  const result = array.slice().sort((a,b) => (a.year - b.year || a.title.localeCompare(b.title) ));
+  console.log('Ejercicio 5:', result)
+return result;
 }
-
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory() {
 
