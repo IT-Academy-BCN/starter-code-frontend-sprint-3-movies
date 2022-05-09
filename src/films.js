@@ -35,12 +35,20 @@ function orderAlphabetically(array) {
 // Exercise 5: Order by year, ascending
 function orderByYear(array) {
   const result = array.slice().sort((a,b) => (a.year - b.year || a.title.localeCompare(b.title) ));
-  console.log('Ejercicio 5:', result)
+  console.log('Ejercicio 5:', result);
 return result;
 }
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
-
+function moviesAverage(array){
+  const newArray = array.map(movie => movie.score).reduce((a,b) => a+b);
+  
+  return newArray/2;
+}
+function moviesAverageByCategory(array, categoria) {
+  const movies = array.filter(movie => movie.genre.includes(categoria));
+  const result = moviesAverage(movies);
+  console.log("EXERCISE 6 ->", result);
+ return result;
 }
 
 // Exercise 7: Modify the duration of movies to minutes
