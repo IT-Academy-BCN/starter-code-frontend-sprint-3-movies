@@ -19,7 +19,7 @@ function moviesAverageOfDirector(array, director) {
 }
 
 function moviesAverage(array){
-  let scores = array.map(m => m.score);
+  let scores = array.map(movie => movie.score).filter(score => score !== ''); 
   let result = scores.reduce((prevValue, currentValue) => (prevValue + currentValue)) / scores.length;
   return result;
 }
@@ -59,8 +59,10 @@ function orderByYear(array) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
-
+function moviesAverageByCategory(array, category) {
+  let movies = array.filter(m => m.genre.includes(category));
+  let result = moviesAverage(movies);
+  return result;
 }
 
 // Exercise 7: Modify the duration of movies to minutes
