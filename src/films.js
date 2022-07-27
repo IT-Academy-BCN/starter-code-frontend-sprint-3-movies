@@ -20,13 +20,12 @@ function getMoviesFromDirector(array, director) {
 function moviesAverageOfDirector(array, director) {
   
   /* const result = array.filter(element => element.director === director);
-  const scores = result.map(element => element.score);
-  const average = scores.reduce((totalScore, element) => totalScore + element);
+  const average = result.reduce((totalScore, element) => totalScore + element.score);
   const numberMovies = result.length;
   const scoreAverage = Number((average / numberMovies).toFixed(2)); */
 
   // Resumit en una línia
-  const result = Number((array.filter(element => element.director === director).map(element => element.score).reduce((totalScore, element) => totalScore + element, 0) / array.filter(element => element.director === director).length).toFixed(2));
+  const result = Number((array.filter(element => element.director === director).reduce((previ, actual) => previ + actual.score, 0) / array.filter(element => element.director === director).length).toFixed(2));
   
   console.log("EXERCISE 3 ->", result);
   return result;
@@ -44,8 +43,21 @@ function orderAlphabetically(array) {
 }
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {
+function orderByYear(array) {
 
+  const result = array.map(element => ({...element})).sort((previ, actual) => {
+    
+    const ordre = previ.year - actual.year;
+
+    if (ordre == 0) {
+      if (previ.title < actual.title) return -1;
+      else return 1;
+      }  
+    else return ordre;    
+  });
+
+  console.log("EXERCISE 5 ->", result);
+  return result; 
 }
 
 // Exercise 6: Calculate the average of the movies in a category
