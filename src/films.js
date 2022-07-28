@@ -35,7 +35,6 @@ function moviesAverageOfDirector(array, director) {
 function orderAlphabetically(array) {
 
   const result = array.map(element => element.title).sort();
-  console.log(result);
   if (result.length > 20) result.length = 20;
 
   console.log("EXERCISE 4 ->", result);
@@ -50,10 +49,12 @@ function orderByYear(array) {
     const ordre = previ.year - actual.year;
 
     if (ordre == 0) {
+
       if (previ.title < actual.title) return -1;
       else return 1;
-      }  
-    else return ordre;    
+    }  
+    else return ordre;
+
   });
 
   console.log("EXERCISE 5 ->", result);
@@ -61,8 +62,19 @@ function orderByYear(array) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+// No podem reutilitzar la funció de l'exercici 3 perquè aquesta inclou un filter per 'Director'
+function moviesAverageByCategory(array, category) {
 
+  const moviesByCat = array.filter(element => {
+    
+    if (typeof(element.score) !== "number");
+    else return element.genre.includes(category);
+  });
+  
+  const result = Number((moviesByCat.reduce((previ, actual) => previ + actual.score, 0) / moviesByCat.length).toFixed(2));
+
+  console.log("EXERCISE 7 ->", result);
+  return result;
 }
 
 // Exercise 7: Modify the duration of movies to minutes
