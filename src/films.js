@@ -1,7 +1,7 @@
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
 
-  const result =  array.map(element => element.director);
+  const result = array.map(element => element.director);
 
   console.log("EXERCISE 1 ->", result);
   return result;
@@ -17,15 +17,16 @@ function getMoviesFromDirector(array, director) {
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
-function moviesAverageOfDirector(array, director) {
-  
-  /* const result = array.filter(element => element.director === director);
-  const average = result.reduce((totalScore, element) => totalScore + element.score);
-  const numberMovies = result.length;
-  const scoreAverage = Number((average / numberMovies).toFixed(2)); */
+function moviesAverage(arrayReduce) {
 
-  // Resumit en una línia
-  const result = Number((array.filter(element => element.director === director).reduce((previ, actual) => previ + actual.score, 0) / array.filter(element => element.director === director).length).toFixed(2));
+  const arrayFiltered = Number((arrayReduce.reduce((previ, actual) => previ + actual.score, 0) / arrayReduce.length).toFixed(2));
+
+  return arrayFiltered;
+}
+function moviesAverageOfDirector(array, director) {
+
+  const arrayDirector = array.filter(element => element.director === director);
+  const result = moviesAverage(arrayDirector);
   
   console.log("EXERCISE 3 ->", result);
   return result;
@@ -47,7 +48,6 @@ function orderByYear(array) {
   const result = array.map(element => ({...element})).sort((previ, actual) => {
     
     const ordre = previ.year - actual.year;
-
     if (ordre == 0) {
 
       if (previ.title < actual.title) return -1;
@@ -61,16 +61,10 @@ function orderByYear(array) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-// No podem reutilitzar la funció de l'exercici 3 perquè aquesta inclou un filter per 'Director'
 function moviesAverageByCategory(array, category) {
 
-  const moviesByCat = array.filter(element => {
-    
-    if (typeof(element.score) !== "number");
-    else return element.genre.includes(category);
-  });
-  
-  const result = Number((moviesByCat.reduce((previ, actual) => previ + actual.score, 0) / moviesByCat.length).toFixed(2));
+  const moviesByCat = array.filter(element => element.genre.includes(category) && typeof(element.score) === "number");
+  const result = moviesAverage(moviesByCat);
 
   console.log("EXERCISE 6 ->", result);
   return result;
@@ -79,15 +73,14 @@ function moviesAverageByCategory(array, category) {
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes(array) {
 
-  const result = array.map(element => {
+  const result = array.map(element => ({...element})).map(element => {
     
     const min = (element.duration.split(" ").length == 2) ? parseInt(element.duration.split(" ")[0]) * 60 + parseInt(element.duration.split(" ")[1]) : parseInt(element.duration.split(" ")[0]) * 60;
 
-    element = {...element};
     element.duration = min;
     return element;
   });
-
+  
   console.log("EXERCISE 7 ->", result);
   return result;
 }
