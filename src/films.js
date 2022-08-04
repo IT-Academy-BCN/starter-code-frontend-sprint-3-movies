@@ -1,23 +1,22 @@
+
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(movies) {
 
   const result = movies.map( nombres => `${nombres.director}`);
-  console.log("EXERCICE 1 ->", result);
   return result;
 }
 
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(movies, director) {
 
-  const peliculasPorDirector = movies.filter(peli => peli.director === 'Quentin Tarantino');
-  console.log('EXERCICE 2 ->', peliculasPorDirector);
+  const peliculasPorDirector = movies.filter(peli => peli.director == (director = 'Quentin Tarantino'));
   return peliculasPorDirector;
 }
 
 // Exercise 3: Calculate the average of the films of a given director.)
 function moviesAverageOfDirector(movies, director) {
 
-  const films = movies.filter(peli => peli.director === 'Quentin Tarantino');
+  const films = movies.filter(peli => peli.director == (director = 'Quentin Tarantino'));
   const scores = films.map((num) => Number(`${num.score}`));
 
   let sumaScores = scores.reduce(function(a , b){ 
@@ -27,7 +26,6 @@ function moviesAverageOfDirector(movies, director) {
   
   let averageScores = sumaScores / films.length;
   averageScores = Number(averageScores.toFixed(2));
-  console.log('EXERCICI 3 =>', averageScores.toFixed(2));
   return averageScores;
 }
 
@@ -37,10 +35,7 @@ function orderAlphabetically(movies) {
 
   let filmName = movies.map(name =>`${name.title}`);
   filmName.sort();
-
-  console.log('EXERCICI 4 ->', filmName);
   return filmName.slice(0, 20);
-
 }
 
 // Exercise 5: Order by year, ascending
@@ -50,35 +45,57 @@ function orderByYear(movies) {
     title: peli.title,
     year: peli.year
   }));
-  newMovies.sort((a, b) => a.title.localeCompare(b.title)).sort((a, b) => a.year - b.year);
+  newMovies.sort((a,b) => {
+    if(a.year < b.year){
+      return -1;
+    }
+    if(a.year > b.year){
+      return 1;
+    }
+    if(a.title < b.title) {
+      return -1;
+    }
+    if(a.title > b.title){
+      return 1;
+    }
+    return 0;
+  }) ;
 
-  console.log('EXERCICI 5:', newMovies);
+  console.log('EXERCICI 5->', newMovies);
   return newMovies;
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory(movies, genre) {
+function moviesAverageByCategory(movies, genre='Drama') {
 
-  const nuevoArrayPelis = movies.map(peli => ({
-    score: Number(peli.score),
-    genre: peli.genre
-  }));
-  console.log('Array por DRAMA:', nuevoArrayPelis);
+  const pelisXGenero = [];
+  let scores = [];
 
-  const pelisXGenero = nuevoArrayPelis.filter(peli => peli.genre == (genre = 'Drama'));
+  for (let i of movies){
+    if(i.genre == genre ){
+      pelisXGenero.push(i);
+    }
+  }
   console.log('PELIS DRAMA:', pelisXGenero);
 
-  const puntuacions = pelisXGenero.map(num => num.score);
-  console.log('Puntuacion peliculas DRAMA:', puntuacions);
+  for(let x of pelisXGenero){
+    if(x.score != 0 || x.score != ''){
+      scores.push(x.score);
+    }else{
+      pelisXGenero.length--;
+    }
+  }
+  console.log('Puntuaciones:',scores);
 
-  let suma = puntuacions.reduce((a, b) => {
+  let suma = scores.reduce((a, b) => {
     return a + b;
   }, 0);
+  suma = Number(suma);
   console.log('SUMA SCORES:', suma);
 
   let media = suma / pelisXGenero.length;
-  media = Number(media);
-  console.log('la media "Drama" es:', media);
+  media = Number(media.toFixed(2));
+  console.log('la media "Drama" es:', typeof media);
   return media;
 }
 
@@ -86,20 +103,22 @@ function moviesAverageByCategory(movies, genre) {
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes(movies) {
 
-  const nouArrayPelis = [];
+  let nuevo_movies = [];
 
-  for(let x of movies){
-    x.duration = x.duration.replace('h','').replace('min','').split(' ');
-    //console.log(x.duration);
-    if(x.duration.length == 1){
-      x.duration = Number(x.duration[0]*60);
+  for(let peli of movies){
+    peli.duration = peli.duration.replace('h','');
+    peli.duration = peli.duration.replace('min','');
+    peli.duration = peli.duration.split(' ');
+
+    if(peli.duration.length == 1){
+      peli.duration = Number(peli.duration[0]) * 60;
     }else{
-      x.duration = Number(x.duration[0]) * 60 + Number(x.duration[1]);
+      peli.duration = Number(peli.duration[0]) * 60 + Number(peli.duration[1]);
     }
-    nouArrayPelis.push(x);
+    nuevo_movies.push(peli);
   }
-  console.log('EXERCICI 7:', nouArrayPelis);
-  return nouArrayPelis;
+  console.log('EXERCICI 7->', nuevo_movies);
+  return nuevo_movies;
 }
 
 // Exercise 8: Get the best film of a year
