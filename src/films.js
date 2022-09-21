@@ -9,14 +9,19 @@ function getAllDirectors(array) {
 function getMoviesFromDirector(array, director) {
   let result = array.filter(a => a.director === director);
   let moviesArray = [];
-  result.forEach(function(movie) {moviesArray.push(movie.title)})
+  result.forEach(function(movie) {moviesArray.push(movie)});
   console.log('Exercice 2 ->', moviesArray);
   return moviesArray;
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
-function moviesAverageOfDirector(array, director) {
-  
+function moviesAverageOfDirector(director) {
+  let moviesArray = getMoviesFromDirector(director);
+  let total = 0, average;
+  moviesArray.forEach(function(movie) {total += movie.score});
+  average = (total/moviesArray.length).toFixed(2);
+  console.log('Exercice 3 ->', average);
+  return average;
 }
 
 // Exercise 4:  Alphabetic order by title 
