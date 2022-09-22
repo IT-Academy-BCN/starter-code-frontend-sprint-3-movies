@@ -36,10 +36,11 @@ function averageOfMovies(array){
 
 // Exercise 4:  Alphabetic order by title
 function orderAlphabetically(array) {
-  let slicedArray, sortedList;
-  array.sort((a, b) => {
-    const titleA = a.title.toUpperCase();
-    const titleB = b.title.toUpperCase();
+  let slicedArray;
+  let titlesList = array.map(a => a.title);
+  titlesList.sort((a, b) => {
+    const titleA = a.toUpperCase();
+    const titleB = b.toUpperCase();
     if (titleA < titleB) {
       return -1;
     }
@@ -48,10 +49,10 @@ function orderAlphabetically(array) {
     }
     return 0;
   });
-  slicedArray = array.slice(0, 20);
-  sortedList = slicedArray.map(a => a.title);
-  console.log('Exercise 4 ->', sortedList);
-  return sortedList;
+  slicedArray = titlesList.slice(0, 20);
+
+  console.log('Exercise 4 ->', slicedArray);
+  return slicedArray;
 }
 
 // Exercise 5: Order by year, ascending
