@@ -355,7 +355,7 @@ describe('Function "moviesAverageByCategory"', () => {
 });
 
 // Exercise 7
-/*describe('Function "hoursToMinutes"', () => {
+describe('Function "hoursToMinutes"', () => {
   it('should be declared', () => {
     expect(typeof hoursToMinutes).toBe('function');
   });
@@ -389,7 +389,7 @@ describe('Function "moviesAverageByCategory"', () => {
 });
 
 // Exercise 8
-describe('Function "bestFilmOfYear"', () => {
+/*describe('Function "bestFilmOfYear"', () => {
   it('should be declared', () => {
     expect(typeof bestFilmOfYear).toBe('function');
   });
