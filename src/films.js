@@ -19,14 +19,19 @@ function moviesAverageOfDirector(array, director) {
   let moviesArray = getMoviesFromDirector(array, director);
   let average = averageOfMovies(moviesArray);
   console.log('Exercise 3 ->', average);
-  return average;
+  return Number(average);
 }
 
 function averageOfMovies(array){
-  let total = 0, average;
-  array.forEach(function(movie) {total += movie.score});
-  average = (total/array.length).toFixed(2);
-  return average;
+  let total = 0, scoredMovies = 0, average;
+  array.forEach(function(movie) {
+    if (movie.score !== ''){
+      total += movie.score;
+      scoredMovies++;
+    }
+  });
+  average = (total/scoredMovies).toFixed(2);
+  return Number(average);
 }
 
 // Exercise 4:  Alphabetic order by title
