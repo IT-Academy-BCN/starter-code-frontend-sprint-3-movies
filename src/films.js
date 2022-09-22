@@ -1,7 +1,7 @@
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
   let result = array.map(a => a.director);
-  console.log("EXERCICE 1 ->", result);
+  console.log('Exercise 1 ->', result);
   return result;
 }
 
@@ -10,21 +10,26 @@ function getMoviesFromDirector(array, director) {
   let result = array.filter(a => a.director === director);
   let moviesArray = [];
   result.forEach(function(movie) {moviesArray.push(movie)});
-  console.log('Exercice 2 ->', moviesArray);
+  console.log('Exercise 2 ->', moviesArray);
   return moviesArray;
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(array, director) {
   let moviesArray = getMoviesFromDirector(array, director);
-  let total = 0, average;
-  moviesArray.forEach(function(movie) {total += movie.score});
-  average = (total/moviesArray.length).toFixed(2);
-  console.log('Exercice 3 ->', average);
+  let average = averageOfMovies(moviesArray);
+  console.log('Exercise 3 ->', average);
   return average;
 }
 
-// Exercise 4:  Alphabetic order by title 
+function averageOfMovies(array){
+  let total = 0, average;
+  array.forEach(function(movie) {total += movie.score});
+  average = (total/array.length).toFixed(2);
+  return average;
+}
+
+// Exercise 4:  Alphabetic order by title
 function orderAlphabetically(array) {
   let slicedArray, sortedList;
   array.sort((a, b) => {
@@ -40,7 +45,7 @@ function orderAlphabetically(array) {
   });
   slicedArray = array.slice(0, 20);
   sortedList = slicedArray.map(a => a.title);
-  console.log('Exercice 4 ->', sortedList);
+  console.log('Exercise 4 ->', sortedList);
   return sortedList;
 }
 
@@ -61,13 +66,16 @@ function orderByYear(array) {
       return 0;
     }
   });
-  console.log('Exercice 5 ->', array);
+  console.log('Exercise 5 ->', array);
   return array;
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
-
+function moviesAverageByCategory(array, category) {
+  let genreMovies = array.filter(movie => movie.genre.includes(category));
+  let average = averageOfMovies(genreMovies);
+  console.log('Exercise 6 ->', average);
+  return average;
 }
 
 // Exercise 7: Modify the duration of movies to minutes
