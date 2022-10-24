@@ -68,8 +68,27 @@ function moviesAverageByCategory(array, category) {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function convertHoursToMinutes(string) {
+  // Remove ending only if string format is "xh yymin", not if it is "xh" or "xxh"
+  if (string.length <= 3) {
+    strResult = string.slice(0, -1);
+    strToMinute = parseInt(strResult) * 60;
+    return strToMinute;
+  } else {
+    const strRemovedEnding = string.slice(0, -3);
+    const strSplitted = strRemovedEnding.split('h ');
+    strSplitted[0] = strSplitted[0] * 60;
+    const strSum = parseInt(strSplitted[0]) + parseInt(strSplitted[1]);
+    return strSum;
+  }
+}
 
+function hoursToMinutes(array) {
+  const arrayDeepCopy = JSON.parse(JSON.stringify(array));
+  arrayDeepCopy.forEach((movie) => {
+    movie.duration = convertHoursToMinutes(movie.duration);
+  });
+  return arrayDeepCopy;
 }
 
 // Exercise 8: Get the best film of a year
