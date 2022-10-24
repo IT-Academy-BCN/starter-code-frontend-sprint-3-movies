@@ -45,8 +45,17 @@ function orderAlphabetically(array) {
 }
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {
-
+function orderByYear(array) {
+  const arrayCopy = [...array];
+  const orderedMovies = arrayCopy.sort((a, b) => a.year - b.year);
+  const orderedAlsoByAlph = orderedMovies.sort((a, b) => {
+    if (a.year === b.year) {
+      // Added the following line in case there are two homonymous films from the same year
+      if (a.title === b.title) return 0;
+      return a.title < b.title ? -1 : 1;
+    }
+  });
+  return orderedAlsoByAlph;
 }
 
 // Exercise 6: Calculate the average of the movies in a category
