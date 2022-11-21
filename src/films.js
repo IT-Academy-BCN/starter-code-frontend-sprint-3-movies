@@ -39,27 +39,35 @@ function orderAlphabetically(array) {
 
 // Exercise 5: Order by year, ascending // he afegit jo l'array.
 function orderByYear(array) {
-  
- let movies = array.map(x => x);
-  let orderedMovies = movies.sort((a, b) => {
-    if (a.year === b.year){
-      if (a.title > b.title){
+
+  let movies = array.map(x => x); //creo nova array perque no vull modificar l'original.
+  let orderedMovies = movies.sort((a, b) => { //ordeno l'array a amb sort a partir dels dos elements que vull anar comparant (a, b) 
+    if (a.year === b.year) {                   //Imposo condicions per a aconseguir l'ordre desitjat.
+      if (a.title > b.title) {
         return 1;
       } else {
-      return -1;
+        return -1;
       }
     } else {
       return a.year - b.year;
     }
   });
+  //console.log(orderedMovies)
   return orderedMovies;
-  
+
 }
 
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+function moviesAverageByCategory(array, string) {
+  const genreFilms = array.filter(x => x.genre.includes(string) && x.score != 0);
+  console.log(genreFilms)
+  const scores = genreFilms.map(film => film.score);
+  const scoresMovies = scores.length
 
+  const scoreTotal = scores.reduce((a, b) => (a + b))
+  let result = parseFloat((scoreTotal / scoresMovies).toFixed(2));
+  return result
 }
 
 // Exercise 7: Modify the duration of movies to minutes
