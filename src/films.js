@@ -30,7 +30,7 @@ function moviesAverageOfDirector(array, director) {
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
 
-  titles = array.map(x => x.title) //I'm taking the whole object, but what I want are just the titles).
+  titles = array.map(x => x.title)
   orderedTitles = titles.sort()
   firstTwentyTitles = orderedTitles.slice(0, 20)
   return firstTwentyTitles
@@ -39,8 +39,21 @@ function orderAlphabetically(array) {
 
 // Exercise 5: Order by year, ascending // he afegit jo l'array.
 function orderByYear(array) {
- 
-
+  
+ let movies = array.map(x => x);
+  let orderedMovies = movies.sort((a, b) => {
+    if (a.year === b.year){
+      if (a.title > b.title){
+        return 1;
+      } else {
+      return -1;
+      }
+    } else {
+      return a.year - b.year;
+    }
+  });
+  return orderedMovies;
+  
 }
 
 
