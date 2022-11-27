@@ -41,7 +41,7 @@ function orderAlphabetically(array) {
 function orderByYear(array) {
 
   let movies = array.map(x => x); //creo nova array perque no vull modificar l'original.
-  let orderedMovies = movies.sort((a, b) => { //ordeno l'array a amb sort a partir dels dos elements que vull anar comparant (a, b) 
+  let result = movies.sort((a, b) => { //ordeno l'array amb sort a partir dels dos elements que vull anar comparant (a, b) 
     if (a.year === b.year) {                   //Imposo condicions per a aconseguir l'ordre desitjat.
       if (a.title > b.title) {
         return 1;
@@ -53,7 +53,7 @@ function orderByYear(array) {
     }
   });
   //console.log(orderedMovies)
-  return orderedMovies;
+  return result;
 
 }
 
@@ -70,15 +70,44 @@ function moviesAverageByCategory(array, string) {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
-
+function hoursToMinutes(array) {
+  const result = []
+  array.forEach(obj => {
+    const durationString = obj.duration
+    let durationMin = 0
+    durationString.split(" ").forEach(timeValue => {
+      if (timeValue.includes("h")) {
+        const hours = timeValue.replace("h", "")
+        durationMin = Number(hours) * 60
+      }
+      else {
+        const minutes = timeValue.replace("min", "")
+        durationMin += Number(minutes)
+      }
+    })
+   result.push({
+      title: obj.title,
+      year: obj.year,
+      director: obj.director,
+      duration: durationMin,
+      genre: obj.genre,
+      score: obj.score
+    })
+  });
+  return result
+  /*
+  for (let index = 0; index < array.length; index++) {
+    const movie = array[index];
+  }
+  */
+  // 2h 15min
+  // 135
 }
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear(array, year) {
-  let moviesThatYear = array.filter(x => x.year === year)
-    let sortedYears = moviesThatYear.sort()
-    moviesThatYear.sort(function (a, b) {
+  const moviesThatYear = array.filter(x => x.year === year)
+  moviesThatYear.sort(function (a, b) {
     if (a.score < b.score) {
       return 1;
     }
@@ -87,9 +116,9 @@ function bestFilmOfYear(array, year) {
     }
     return 0;
   })
-      
-const bestRated = moviesThatYear.splice(0,1)
-return bestRated;
+
+  const bestRated = moviesThatYear.splice(0, 1)
+  return bestRated;
 }
 
 
