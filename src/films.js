@@ -62,8 +62,22 @@ function moviesAverageByCategory(array, genre) {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function hoursToMinutes(array) {  
+  const result = [...array].map(element => {
+    const timeArray = element.duration.split(' ');
+    
+    //quito la h de hora
+    timeArray[0] = timeArray[0].substring(0, timeArray[0].length-1);
+    
+    //quito los min de los minutos si tiene
+    (timeArray[1]) ? timeArray[1] = timeArray[1].substring(0, timeArray[1].length-3) : timeArray[1]=0;
 
+    //sumo las horas a los minutos y devuelvo el valor
+    return {...element, duration: (timeArray[0]*60) + parseInt(timeArray[1])};
+  });
+
+  console.log("EXERCICE 7 ->", result);
+  return result;
 }
 
 // Exercise 8: Get the best film of a year
