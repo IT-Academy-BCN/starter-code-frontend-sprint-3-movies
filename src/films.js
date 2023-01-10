@@ -79,8 +79,9 @@ function bestFilmOfYear(array, year) {
   });
   let bestMov = newArray.reduce((acc, value) => {
     return (acc = acc > value.score ? acc : value.score);
-  }, 0);  
-  return bestMov;
+  }, 0); 
+  let mov = newArray.filter((mov) => mov.score === bestMov);
+  return mov;
 }
 
 // The following is required to make unit tests work.
