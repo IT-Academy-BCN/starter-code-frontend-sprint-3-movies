@@ -16,6 +16,12 @@ Also, this sprint introduces unit testing. The tests are already written for me 
 
 **— Exercise 1**
 
-Make the `getAllDirectors()` function, which iterates over the movies array with `map` and gets the director of each movie.
+Make the `getAllDirectors(array)` function, which iterates over the movies array with `map` and creates a new array with the director of each movie.
+
+##### ✅ Finished: 15/02/2023
+
+**— Exercise 2**
+
+Make the `getMoviesFromDirector(array, director)` function, which iterates over the movies array with `filter` and creates a new array with the movies from the director that was passed as parameter.
 
 ##### ✅ Finished: 15/02/2023
