@@ -37,3 +37,14 @@ Make the `moviesAverageOfDirector` function, which gets all the movies from a sp
 Make the `orderAlphabetically` function, which gets all the movie titles, sorts them alphabetically, and returns only the 20 first ones.
 
 ##### ✅ Finished: 16/02/2023
+
+**— Exercise 5**
+
+Make the `orderByYear` function, which gets the array with all the movie and sorts them by their release year. Movies that were released in the same year are sorted alphabetically.
+
+✏️**Notes:**
+
+- This exercise helped me understand the `sort` method when used with a comparator function as an argument. When used this way, you can specify the comparison it should do between two elements in an array. If no function is passed in, by default it turns the elements into strings and sorts them alphabetically.
+- I also learned about `localeCompare`. This method compares two strings and returns a negative value if the first string comes before the second one in alphabetical order, and a positive value if it's the other way around. It returns 0 if both strings are equal.
+
+##### ✅ Finished: 17/02/2023

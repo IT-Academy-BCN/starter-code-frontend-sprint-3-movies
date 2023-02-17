@@ -58,12 +58,32 @@ function orderAlphabetically(array) {
 }
 
 console.log(
-  'EX 4 (should show an array of movie titles ordered alphabetically):',
+  'EX 4 (should show an array of 20 movie titles ordered alphabetically):',
   orderAlphabetically(movies)
 );
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {}
+function orderByYear(array) {
+  const sortedMoviesByYear = [...array];
+
+  return sortedMoviesByYear.sort((movie1, movie2) => {
+    if (movie1.year < movie2.year) {
+      return -1;
+    } else if (movie1.year > movie2.year) {
+      return 1;
+    } else {
+      // If the release years are the same, sort them alphabetically.
+      // localeCompare compares two strings and returns a negative
+      // or positive value depending on the result
+      return movie1.title.localeCompare(movie2.title);
+    }
+  });
+}
+
+console.log(
+  'EX 5 (should show an array of movies ordered by their release year, and alphabetically for those that share the same release year):',
+  orderByYear(movies)
+);
 
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory() {}
