@@ -40,7 +40,27 @@ console.log(
 );
 
 // Exercise 4:  Alphabetic order by title
-function orderAlphabetically(array) {}
+
+/* function orderAlphabetically(array) {
+  const movieTitles = array.map((movie) => movie.title);
+  const movieTitlesSorted = movieTitles.sort();
+  const top20MovieTitlesSorted = movieTitlesSorted.slice(0, 20);
+
+  return top20MovieTitlesSorted;
+} */
+
+// Using method chaining
+function orderAlphabetically(array) {
+  return array
+    .map((movie) => movie.title)
+    .sort()
+    .slice(0, 20);
+}
+
+console.log(
+  'EX 4 (should show an array of movie titles ordered alphabetically):',
+  orderAlphabetically(movies)
+);
 
 // Exercise 5: Order by year, ascending
 function orderByYear() {}

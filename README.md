@@ -16,18 +16,24 @@ Also, this sprint introduces unit testing. The tests are already written for me 
 
 **— Exercise 1**
 
-Make the `getAllDirectors(array)` function, which iterates over the movies array with `map` and creates a new array with the director of each movie.
+Make the `getAllDirectors` function, which iterates over the movies array with `map` and creates a new array with the director of each movie.
 
 ##### ✅ Finished: 15/02/2023
 
 **— Exercise 2**
 
-Make the `getMoviesFromDirector(array, director)` function, which iterates over the movies array with `filter` and creates a new array with the movies from the director that was passed as parameter.
+Make the `getMoviesFromDirector` function, which iterates over the movies array with `filter` and creates a new array with the movies from the director that was passed as parameter.
 
 ##### ✅ Finished: 15/02/2023
 
 **— Exercise 3**
 
-Make the `moviesAverageOfDirector(array, director)` function, which gets all the movies from a specific director, adds the score of all their movies, and divides the total sum by the number of movies in order to get the average score. The `reduce` method was used to iterate over the array of movies and add the scores to an accumulator.
+Make the `moviesAverageOfDirector` function, which gets all the movies from a specific director, adds the score of all their movies, and divides the total sum by the number of movies in order to get the average score. The `reduce` method was used to iterate over the array of movies and add the scores to an accumulator.
+
+##### ✅ Finished: 16/02/2023
+
+**— Exercise 4**
+
+Make the `orderAlphabetically` function, which gets all the movie titles, sorts them alphabetically, and returns only the 20 first ones.
 
 ##### ✅ Finished: 16/02/2023
