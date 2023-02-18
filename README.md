@@ -48,3 +48,9 @@ Make the `orderByYear` function, which gets the array with all the movie and sor
 - I also learned about `localeCompare`. This method compares two strings and returns a negative value if the first string comes before the second one in alphabetical order, and a positive value if it's the other way around. It returns 0 if both strings are equal.
 
 ##### ✅ Finished: 17/02/2023
+
+**— Exercise 6**
+
+Make the `moviesAverageByCategory` function, which calculates the average score of all the movies from a specific genre.
+
+##### ✅ Finished: 17/02/2023

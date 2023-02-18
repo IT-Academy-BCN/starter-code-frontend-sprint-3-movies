@@ -21,17 +21,26 @@ console.log(
 );
 
 // Exercise 3: Calculate the average of the films of a given director.
-function moviesAverageOfDirector(array, director) {
-  const moviesByDirector = getMoviesFromDirector(array, director);
-  const moviesByDirectorScore = moviesByDirector.map((movie) => movie.score);
-  const moviesByDirectorScoreSum = moviesByDirectorScore.reduce(
-    (acc, score) => acc + score,
+
+function filterMoviesWithoutScore(array) {
+  return array.filter((movie) => movie.score != '');
+}
+
+function calculateAverageScore(array) {
+  const moviesWithScore = filterMoviesWithoutScore(array);
+  const moviesTotalScore = moviesWithScore.reduce(
+    (acc, movie) => acc + movie.score,
     0
   );
-  const moviesByDirectorScoreAverage =
-    moviesByDirectorScoreSum / moviesByDirector.length;
 
-  return Number(moviesByDirectorScoreAverage.toFixed(2));
+  const moviesAverageScore = moviesTotalScore / moviesWithScore.length;
+  return Number(moviesAverageScore.toFixed(2));
+}
+
+function moviesAverageOfDirector(array, director) {
+  const moviesByDirector = getMoviesFromDirector(array, director);
+
+  return calculateAverageScore(moviesByDirector);
 }
 
 console.log(
@@ -86,7 +95,18 @@ console.log(
 );
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {}
+function moviesAverageByCategory(array, category) {
+  const moviesByCategory = array.filter((movies) =>
+    movies.genre.includes(category)
+  );
+
+  return calculateAverageScore(moviesByCategory);
+}
+
+console.log(
+  'EX 6 (should show the average score of action movies):',
+  moviesAverageByCategory(movies, 'Action')
+);
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {}
