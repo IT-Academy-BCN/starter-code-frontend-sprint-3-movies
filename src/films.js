@@ -59,38 +59,73 @@ function moviesAverageByCategory(array, genre) {
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes(array) {
-  return array.map( film => {
-    const durationHoursMinutes = film.duration.split(" ");
-    let durationMinutes = 0;
-    if ( durationHoursMinutes.length === 2 ) {
-      durationMinutes += Number(durationHoursMinutes[0] * 60);
+  let minutes = [];
+  const convertToMinutes = hours => hours * 60;
+  let filmDurations = array.map( film => film.duration.split('h'));
+
+  filmDurations.forEach( film => {
+    let newDuration = {};
+    if( film.length > 1 && film[1].includes('min') ) {
+      newDuration.duration = convertToMinutes(Number(film[0])) + Number(film[1].replace('min', ''));
+    } else if ( film[0].includes('min') ) {
+      newDuration.duration = Number(film[0].replace('min', ''));
+    } else {
+      newDuration.duration = convertToMinutes(Number(film[0])); 
     }
-    durationMinutes += Number(durationHoursMinutes[durationHoursMinutes - 2]);
-    film.duration = durationMinutes.toString();
-    return {
-      ...movie,
-      duration: durationMinutes
-    };
+    minutes.push(newDuration);
   });
+  
+  return minutes;
 }
 
-// // Exercise 7: Modify the duration of movies to minutes
-// function hoursToMinutes(array) {
-//   const newArray = array.map( function(film) {
-//     const deleteLetters = film.duration.replace("h","").replace("min","").replace(" ",",").split(",");
+
+//function hoursToMinutes(array) {
+//   return array.map( film => {
+//     const durationHoursMinutes = film.duration.split(" ");
 //     let durationMinutes = 0;
-//     if ( deleteLetters.length > 1 ) {
-//       const hours = Number(deleteLetters[0]);
-//       const minutes = Number(deleteLetters[1]);
-//       durationMinutes = hours * 60 + minutes;
+//     if ( durationHoursMinutes.length === 2 ) {
+//       durationMinutes += Number(durationHoursMinutes[0] * 60);
 //     }
-//     else {
-//       durationMinutes = Number(deleteLetters[0]);
-//     } 
+//     durationMinutes += Number(durationHoursMinutes[durationHoursMinutes - 2]);
 //     film.duration = durationMinutes.toString();
+//     return {
+//       ...movie,
+//       duration: durationMinutes
+//     };
+//   });
+// }
+
+// Exercise 7: Modify the duration of movies to minutes
+//   const newDuration = array.map( function(film) {
+//     let matchesNumbers = /(\d+)/g;
+//     let result = film.duration.match(matchesNumbers);
+//     let durationMinutes = result.length === 2 ? 
+//       (parseInt(result[0]) * 60) + parseInt(result[1]) :
+//       (parseInt(result[0]) * 60);
+    
+//     result = durationMinutes;
 //   });
 
-//   return newArray;
+//   return newDuration;
+// }
+
+// function hoursToMinutes(array) {
+  
+//   const newDuration = [...array].map(({...film}) => { 
+//     let totalMin = 0;
+//     let chkDuration = film.duration;  
+//     if (film.duration.length === 2){
+//       totalMin = Number.parseInt(chkDuration.slice(0,-1)) * 60;
+//     }else if(film.duration.length === 7){
+//       totalMin = (Number.parseInt(chkDuration.slice(0,-1)) * 60) + Number.parseInt(chkDuration.slice(-4,-3));
+//     }else if(film.duration.length === 8){
+//       totalMin = (Number.parseInt(chkDuration.slice(0,-1)) * 60) + Number.parseInt(chkDuration.slice(-5,-3));
+//     }
+//     film.duration = totalMin;
+//     return film
+//   });
+//   // console.log('EXERCICE 7 ->',newDuration);
+//   return newDuration;
 // }
 
 // Exercise 8: Get the best film of a year
