@@ -77,6 +77,8 @@ function hoursToMinutes(array) {
   return moviesDurationMinutes;
 }
 
+
+
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
   
