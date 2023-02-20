@@ -19,11 +19,9 @@ function moviesAverageOfDirector(array, director, genre) {
   if ( director ) {
     selectedMovies = getMoviesFromDirector(array, director);
   }
-
   if ( genre ) {
     selectedMovies = array.filter( (film) => film.genre.find( (element) => element === genre));
   }
-  
   const average = selectedMovies.reduce((sum, film) => sum + film.score, 0) / selectedMovies.filter( (film) => film.score !== '' ).length;
   return Number(average.toFixed(2));
 }
@@ -62,6 +60,7 @@ function hoursToMinutes(array) {
   const moviesDurationMinutes = array.map( film => {
     const durationParts = film.duration.split(' ');
     let totalMinutes = 0;
+
     for ( const part of durationParts ) {
       if ( part.includes('h') ) {
         totalMinutes += parseInt(part) * 60;
@@ -74,14 +73,22 @@ function hoursToMinutes(array) {
       duration: totalMinutes
     };
   } );
+
+  console.log("EXERCICE 7 ->", moviesDurationMinutes);
   return moviesDurationMinutes;
 }
 
-
-
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
+function bestFilmOfYear(array, year) {
+  let bestFilm = array
+  .filter( film => film.year === year )
+  .sort( (a, b) => b.score - a.score );
+
+  const result = [bestFilm[0]];
   
+  console.log("EXERCICE 8 ->", result);
+  return result;
+
 }
 
 
