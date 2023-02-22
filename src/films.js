@@ -109,7 +109,30 @@ console.log(
 );
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {}
+function hoursToMinutes(array) {
+  const newArr = [...array];
+
+  return newArr.map((movie) => {
+    // Divide the movie.duration string by the space between
+    // the hours and minutes
+    const movieHours = parseInt(movie.duration.split(' ')[0]);
+    // Check if the string has any minutes
+    const movieMinutes = isNaN(parseInt(movie.duration.split(' ')[1]))
+      ? 0
+      : parseInt(movie.duration.split(' ')[1]);
+
+    return {
+      ...movie,
+      duration: movieHours * 60 + movieMinutes
+    };
+  });
+}
+
+console.log(
+  'EX 7 (should show the array of movies with the duration in minutes):',
+  hoursToMinutes(movies),
+  movies
+);
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {}

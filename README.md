@@ -54,3 +54,11 @@ Make the `orderByYear` function, which gets the array with all the movie and sor
 Make the `moviesAverageByCategory` function, which calculates the average score of all the movies from a specific genre.
 
 ##### ✅ Finished: 17/02/2023
+
+### ⭐⭐ **Level 2** ⭐⭐
+
+**— Exercise 7**
+
+Make the `hoursToMinutes` function, which maps through the array of movies and creates a copy with the `duration` value of each movie object converted to minutes.
+
+##### ✅ Finished: 22/02/2023
