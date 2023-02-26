@@ -1,79 +1,44 @@
 const movies = require('../src/data');
 
 // Exercise 1: Get the array of all directors.
-function getAllDirectors(array) {
-  return array.map((movie) => movie.director);
+function getAllDirectors(movies) {
+  return movies.map((movie) => movie.director);
 }
-
-console.log(
-  'EX 1 (should show an array of all directors):',
-  getAllDirectors(movies)
-);
 
 // Exercise 2: Get the films of a certain director
-function getMoviesFromDirector(array, director) {
-  return array.filter((movie) => movie.director === director);
+function getMoviesFromDirector(movies, director) {
+  return movies.filter((movie) => movie.director === director);
 }
-
-console.log(
-  'EX 2 (should show an array of movies by Tarantino):',
-  getMoviesFromDirector(movies, 'Quentin Tarantino')
-);
 
 // Exercise 3: Calculate the average of the films of a given director.
-
-function filterMoviesWithoutScore(array) {
-  return array.filter((movie) => movie.score != '');
-}
-
-function calculateAverageScore(array) {
-  const moviesWithScore = filterMoviesWithoutScore(array);
+function calculateAverageScore(movies) {
+  const moviesWithScore = movies.filter((movie) => movie.score != '');
   const moviesTotalScore = moviesWithScore.reduce(
     (acc, movie) => acc + movie.score,
     0
   );
-
   const moviesAverageScore = moviesTotalScore / moviesWithScore.length;
+
   return Number(moviesAverageScore.toFixed(2));
 }
 
-function moviesAverageOfDirector(array, director) {
-  const moviesByDirector = getMoviesFromDirector(array, director);
+function moviesAverageOfDirector(movies, director) {
+  const moviesByDirector = getMoviesFromDirector(movies, director);
 
   return calculateAverageScore(moviesByDirector);
 }
 
-console.log(
-  'EX 3 (should show the average score of movies by Tarantino):',
-  moviesAverageOfDirector(movies, 'Quentin Tarantino')
-);
-
 // Exercise 4:  Alphabetic order by title
-
-/* function orderAlphabetically(array) {
-  const movieTitles = array.map((movie) => movie.title);
-  const movieTitlesSorted = movieTitles.sort();
-  const top20MovieTitlesSorted = movieTitlesSorted.slice(0, 20);
-
-  return top20MovieTitlesSorted;
-} */
-
-// Using method chaining
-function orderAlphabetically(array) {
-  return array
+function orderAlphabetically(movies) {
+  return movies
     .map((movie) => movie.title)
     .sort()
     .slice(0, 20);
 }
 
-console.log(
-  'EX 4 (should show an array of 20 movie titles ordered alphabetically):',
-  orderAlphabetically(movies)
-);
-
 // Exercise 5: Order by year, ascending
-function orderByYear(array) {
-  const sortedMoviesByYear = [...array];
+function orderByYear(movies) {
+  const sortedMoviesByYear = [...movies];
 
   return sortedMoviesByYear.sort((movie1, movie2) => {
     if (movie1.year < movie2.year) {
@@ -89,37 +54,24 @@ function orderByYear(array) {
   });
 }
 
-console.log(
-  'EX 5 (should show an array of movies ordered by their release year, and alphabetically for those that share the same release year):',
-  orderByYear(movies)
-);
-
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory(array, category) {
-  const moviesByCategory = array.filter((movies) =>
+function moviesAverageByCategory(movies, category) {
+  const moviesByCategory = movies.filter((movies) =>
     movies.genre.includes(category)
   );
 
   return calculateAverageScore(moviesByCategory);
 }
 
-console.log(
-  'EX 6 (should show the average score of action movies):',
-  moviesAverageByCategory(movies, 'Action')
-);
-
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes(array) {
-  const newArr = [...array];
+function hoursToMinutes(movies) {
+  const moviesCopy = [...movies];
 
-  return newArr.map((movie) => {
-    // Divide the movie.duration string by the space between
-    // the hours and minutes
+  return moviesCopy.map((movie) => {
+    // Divide the movie.duration string by the space between the hours and minutes
     const movieHours = parseInt(movie.duration.split(' ')[0]);
-    // Check if the string has any minutes
-    const movieMinutes = isNaN(parseInt(movie.duration.split(' ')[1]))
-      ? 0
-      : parseInt(movie.duration.split(' ')[1]);
+    // Assign 0 minutes if the string has no minutes
+    const movieMinutes = parseInt(movie.duration.split(' ')[1]) || 0;
 
     return {
       ...movie,
@@ -128,14 +80,15 @@ function hoursToMinutes(array) {
   });
 }
 
-console.log(
-  'EX 7 (should show the array of movies with the duration in minutes):',
-  hoursToMinutes(movies),
-  movies
-);
-
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {}
+function bestFilmOfYear(movies, year) {
+  const filmsOfYear = movies.filter((movie) => movie.year === year);
+  const bestMovie = filmsOfYear.reduce((bestMovie, currMovie) =>
+    bestMovie.score > currMovie.score ? bestMovie : currMovie
+  );
+
+  return [bestMovie];
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */

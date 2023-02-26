@@ -55,6 +55,8 @@ Make the `moviesAverageByCategory` function, which calculates the average score 
 
 ##### ✅ Finished: 17/02/2023
 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
 ### ⭐⭐ **Level 2** ⭐⭐
 
 **— Exercise 7**
@@ -62,3 +64,13 @@ Make the `moviesAverageByCategory` function, which calculates the average score 
 Make the `hoursToMinutes` function, which maps through the array of movies and creates a copy with the `duration` value of each movie object converted to minutes.
 
 ##### ✅ Finished: 22/02/2023
+
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+### ⭐⭐⭐ **Level 3** ⭐⭐⭐
+
+**— Exercise 8**
+
+Make the `bestFilmOfYear` function, which filters the movies from a given year and returns the one with the highest score.
+
+##### ✅ Finished: 25/02/2023
