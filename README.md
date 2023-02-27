@@ -1,86 +1,76 @@
-# Sprint 4 IT Academy | Video management tool
+# Front End Development with Vue.js - IT Academy
 
-## Introduction
+## **Sprint 4 - Video Management Tool**
 
-A company in the audiovisual sector has asked us for a web application that will allow their employees to quickly find movies from a large database they have, since the process is currently done manually.
+This sprint focuses on the core concepts of ECMASCript 6, or ES6 for short. Below is the project brief:
 
-You will be in charge of setting up the core of the application: all the logic of filtering and sorting of movies. You have 2 weeks to finish, which is how long this sprint lasts.
+> A company in the audiovisual sector has asked us for a web application that will allow their employees to quickly find movies from a large database they have, since the process is currently done manually.
+>
+> You will be in charge of setting up the core of the application: all the logic of filtering and sorting of movies. You have 2 weeks to finish, which is how long this sprint lasts.
 
-<br>
+Also, this sprint introduces unit testing. The tests are already written for me in `film.specs.js` and I have to make sure my code passes them.
 
-## Requirements
+---
 
+### ⭐ **Level 1** ⭐
 
-1. Clone this repo
-```bash
-$ git clone https://github.com/itacademyReact/starter-code-sprint4.git
-```
+**— Exercise 1**
 
-2. Unlink your repo from the itacademy repository
-```bash
-$ git remote rm origin
-```
+Make the `getAllDirectors` function, which iterates over the movies array with `map` and creates a new array with the director of each movie.
 
-3. Link your repo to the repository you have to create in your github account
-```bash
-$ git remote add origin <your repo name!>
-```
+##### ✅ Finished: 15/02/2023
 
-<br>
+**— Exercise 2**
 
-## Submission
+Make the `getMoviesFromDirector` function, which iterates over the movies array with `filter` and creates a new array with the movies from the director that was passed as parameter.
 
-1. Upon completion, run the following commands:
+##### ✅ Finished: 15/02/2023
 
-```bash
-$ git add .
-$ git commit -m "Sprint Solution"
-$ git push origin master
-```
+**— Exercise 3**
 
-2. Create Pull Request.
+Make the `moviesAverageOfDirector` function, which gets all the movies from a specific director, adds the score of all their movies, and divides the total sum by the number of movies in order to get the average score. The `reduce` method was used to iterate over the array of movies and add the scores to an accumulator.
 
-3. Upload the link to the virtual campus so that your mentor can correct it and give you feedback.
+##### ✅ Finished: 16/02/2023
 
+**— Exercise 4**
 
+Make the `orderAlphabetically` function, which gets all the movie titles, sorts them alphabetically, and returns only the 20 first ones.
 
-<br>
+##### ✅ Finished: 16/02/2023
 
-## Introduction
+**— Exercise 5**
 
-The statement of the exercise is available on the virtual campus.
+Make the `orderByYear` function, which gets the array with all the movie and sorts them by their release year. Movies that were released in the same year are sorted alphabetically.
 
-<br>
+✏️**Notes:**
 
-## Tests!
+- This exercise helped me understand the `sort` method when used with a comparator function as an argument. When used this way, you can specify the comparison it should do between two elements in an array. If no function is passed in, by default it turns the elements into strings and sorts them alphabetically.
+- I also learned about `localeCompare`. This method compares two strings and returns a negative value if the first string comes before the second one in alphabetical order, and a positive value if it's the other way around. It returns 0 if both strings are equal.
 
+##### ✅ Finished: 17/02/2023
 
-```shell
-$ npm install
-$ npm run test:watch
-```
+**— Exercise 6**
 
-And last, open the generated `test-results.html` file with the "Live Server" VSCode extension to see test results.
+Make the `moviesAverageByCategory` function, which calculates the average score of all the movies from a specific genre.
 
-Apart from the statement, you will know exactly what you are asked to do by looking at the file `tests/films.spec.js`, all tests are already defined here!
+##### ✅ Finished: 17/02/2023
 
-<br>
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-## Instructions
+### ⭐⭐ **Level 2** ⭐⭐
 
-You have the following indications from the frontend responsible:
+**— Exercise 7**
 
-- It is mandatory to implement all loops in ES6 (using map, reduce, filter and sort to manipulate arrays).
+Make the `hoursToMinutes` function, which maps through the array of movies and creates a copy with the `duration` value of each movie object converted to minutes.
 
-- As at the moment we don't consume data from a server using an API, we will work with data from the src/data.js archive. For the moment we will implement the logic using
-an array of information about 250 movies.
+##### ✅ Finished: 22/02/2023
 
-- The implementation is about processing this array of movies, to display it as requested in each exercise.
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-- The logic to implement will be placed in the src/films.js file.
+### ⭐⭐⭐ **Level 3** ⭐⭐⭐
 
-- You don't need to show the result of each function on the screen. Your goal is to pass the tests.  More information on how to program oriented to pass tests at the end of the document.
+**— Exercise 8**
 
-- Don't forget to include the capture of the test results in the virtual campus.
+Make the `bestFilmOfYear` function, which filters the movies from a given year and returns the one with the highest score.
 
-
+##### ✅ Finished: 25/02/2023
