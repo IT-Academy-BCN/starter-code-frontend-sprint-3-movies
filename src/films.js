@@ -21,18 +21,42 @@ function getMoviesFromDirector(array, director) {
       return item.title;
     })
 
-  // console.log("EXERCICE 2 ->", directorMovies);
+  console.log("EXERCICE 2 ->", directorMovies);
   return directorMovies;
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(array, director) {
-  
+
+  const directorMovies = array.filter(function(item) {
+    return director === item.director;
+  });
+  const valor = 0;
+  const sumaScores = directorMovies.reduce(function(sumaTotal, item){
+    return sumaTotal + item.score; 
+  }, valor)
+
+  const total = parseFloat((sumaScores / directorMovies.length).toFixed(2));
+
+  console.log("EXERCICE 3 ->", total); 
+  return total;
+//Para el valor medio
+//  Sum all the values of the array.
+// Divide the sum by the length of the array.
+// add all the scores from the movies from the same director and divide them from the array.length
+ 
+
 }
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
-  
+  // should only return the title of the movies, each value should be a string
+  // should return all of items when the array passed has 𝗳𝗲𝘄𝗲𝗿 than 20 items
+  // should order them alphabetically.
+  const firstMovies = array.slice(0, 20);
+  firstMovies.sort()
+  console.log(firstMovies);
+  return firstMovies
 }
 
 // Exercise 5: Order by year, ascending
