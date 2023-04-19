@@ -15,12 +15,13 @@ function getAllDirectors(array) {
 function getMoviesFromDirector(array, director) {
 
   const directorMovies = array.filter(function(item) {
-        if (director == item.director) {
-          return item.title;
-        }
+          return director === item.director;
     });
+  directorMovies.map(function(item) {
+      return item.title;
+    })
 
-  console.log("EXERCICE 2 ->", directorMovies);
+  // console.log("EXERCICE 2 ->", directorMovies);
   return directorMovies;
 }
 
