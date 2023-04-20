@@ -52,27 +52,30 @@ function orderAlphabetically(array) {
 
   console.log("EXERCICE 4 ->", movieTitle);
 
-
   return movieTitle;
-  
+
   // const movieTitle = array.map(function(item) {
   //   return item.title;
   // }).sort();
-
   // movieTitle.slice(0, 20);
-  
   // console.log("EXERCICE 4 ->", movieTitle);
-
-
-
   // return movieTitle;
 
 
 }
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {
+function orderByYear(arr) {
+  
+  const moviesByYear = arr.map( year => year.year)
 
+
+
+  console.log("EXERCICE 5 ->", moviesByYear);
+  //should return the element in a single element array
+  //should return the new array in ascending order
+
+  return moviesByYear;
 }
 
 // Exercise 6: Calculate the average of the movies in a category
