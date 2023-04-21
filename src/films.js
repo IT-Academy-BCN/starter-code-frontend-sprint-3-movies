@@ -58,6 +58,7 @@ function orderAlphabetically(array) {
   //   return item.title;
   // }).sort();
   // movieTitle.slice(0, 20);
+  // slice crea un array nuevo y no se esta guardando. tendriamos que crear una variable para guardarlo
   // console.log("EXERCICE 4 ->", movieTitle);
   // return movieTitle;
 
@@ -67,10 +68,17 @@ function orderAlphabetically(array) {
 // Exercise 5: Order by year, ascending
 function orderByYear(arr) {
   
-  const moviesByYear = arr.map( year => year.year)
+  const moviesByYear = arr.sort(function(yearA, yearB){
+    if (yearA.year !== yearB.year ) {
+      return yearA.year - yearB.year;
+    } else {
 
+    }
+  });
+// devolver array de peliculas ordenadas por año
+// si comparten el mismo año devolverlas ordenadas alfabeticamente.
 
-
+// funcion de sort? (textA < textB) ? -1 : (textA > textB) ? 1 : 0
   console.log("EXERCICE 5 ->", moviesByYear);
   //should return the element in a single element array
   //should return the new array in ascending order
