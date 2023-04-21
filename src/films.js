@@ -68,17 +68,17 @@ function orderAlphabetically(array) {
 // Exercise 5: Order by year, ascending
 function orderByYear(arr) {
   
-  const moviesByYear = arr.sort(function(yearA, yearB){
-    if (yearA.year !== yearB.year ) {
-      return yearA.year - yearB.year;
+  const copyArr = [...arr];
+  const moviesByYear = copyArr.sort(function(itemA, itemB){
+    if (itemA.year === itemB.year ) {
+        return itemA.title.localeCompare(itemB.title);
     } else {
-
+        return itemA.year - itemB.year;
     }
   });
 // devolver array de peliculas ordenadas por año
 // si comparten el mismo año devolverlas ordenadas alfabeticamente.
 
-// funcion de sort? (textA < textB) ? -1 : (textA > textB) ? 1 : 0
   console.log("EXERCICE 5 ->", moviesByYear);
   //should return the element in a single element array
   //should return the new array in ascending order
