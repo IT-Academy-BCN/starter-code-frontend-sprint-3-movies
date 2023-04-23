@@ -1,5 +1,3 @@
-// import { movies } from "./data";
-
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
 
@@ -17,9 +15,7 @@ function getMoviesFromDirector(array, director) {
   const directorMovies = array.filter(function(item) {
           return director === item.director;
     });
-  directorMovies.map(function(item) {
-      return item.title;
-    })
+ 
   console.log("EXERCICE 2 ->", directorMovies);
   return directorMovies;
 }
@@ -31,16 +27,11 @@ function moviesAverageOfDirector(array, director) {
     return director === item.director;
   });
 
-  const valor = 0;
-  const sumaScores = directorMovies.reduce(function(sumaTotal, item){
-    return sumaTotal + item.score; 
-  }, valor)
-  console.log(sumaScores);
-  const total = parseFloat((sumaScores / directorMovies.length).toFixed(2));
+  const total = averageScore(directorMovies);
 
   console.log("EXERCICE 3 ->", total); 
-  return total;
 
+  return total;
 }
 
 // Exercise 4:  Alphabetic order by title 
@@ -53,16 +44,6 @@ function orderAlphabetically(array) {
   console.log("EXERCICE 4 ->", movieTitle);
 
   return movieTitle;
-
-  // const movieTitle = array.map(function(item) {
-  //   return item.title;
-  // }).sort();
-  // movieTitle.slice(0, 20);
-  // slice crea un array nuevo y no se esta guardando. tendriamos que crear una variable para guardarlo
-  // console.log("EXERCICE 4 ->", movieTitle);
-  // return movieTitle;
-
-
 }
 
 // Exercise 5: Order by year, ascending
@@ -76,29 +57,57 @@ function orderByYear(arr) {
         return itemA.year - itemB.year;
     }
   });
-// devolver array de peliculas ordenadas por año
-// si comparten el mismo año devolverlas ordenadas alfabeticamente.
 
-  console.log("EXERCICE 5 ->", moviesByYear);
-  //should return the element in a single element array
-  //should return the new array in ascending order
+  console.log("EXERCISE 5 ->", moviesByYear);
 
   return moviesByYear;
 }
 
-// Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+//Average score of the movies
+function averageScore (arr) {
 
+  const moviesWithScore = arr.filter(movie => movie.score !== '');
+
+  const averageScore = moviesWithScore.reduce(function(acc, movie) {
+    return acc + movie.score;
+  }, 0);
+
+  const total = parseFloat((averageScore / moviesWithScore.length).toFixed(2));
+  console.log("AVERAGE SCore", total);
+  return total;
+
+}
+
+// Exercise 6: Calculate the average of the movies in a category
+function moviesAverageByCategory(array, genre) {
+
+  const getGenres = array.filter((movie) => movie.genre.includes(genre)); 
+  
+  const average = averageScore(getGenres); 
+  
+    
+  console.log("EXERCISE 6 ->", average);
+  return average
 }
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {
 
+
+  console.log("EXERCISE 7 ->");
+
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
+function bestFilmOfYear(arr, year) {
+  const copyArr = [...arr];
+  const bestMovie = copyArr.filter((movie) => year === movie.year).sort((itemA, itemB) => itemA.score - itemB.score);
   
+  
+  
+  console.log("EXERCISE 8 ->", bestMovie);
+
+  return bestMovie
 }
 
 
