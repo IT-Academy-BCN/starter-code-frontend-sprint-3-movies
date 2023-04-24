@@ -87,29 +87,39 @@ function moviesAverageByCategory(array, genre) {
   
     
   console.log("EXERCISE 6 ->", average);
+
   return average
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function hoursToMinutes(arr) {
 
+  const getDuration = arr.map((item) => {
 
-  console.log("EXERCISE 7 ->");
+      const hour = parseInt(item.duration.split("h")[0]) * 60;
+      const min = parseInt(item.duration.split(" ")[1])
+        // .replace("min", "");
+
+      if (parseInt(item.duration.split(" ")[1])) {
+        return min.replace("min", "");
+      }else { return 0}
+  });
+
+  console.log("EXERCISE 7 ww->", getDuration);
+
+  return item.duration = hour + min;
 
 }
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear(arr, year) {
-  const copyArr = [...arr];
-  const bestMovie = copyArr.filter((movie) => year === movie.year).sort((itemA, itemB) => itemA.score - itemB.score);
+  // const copyArr = [...arr];
+  const bestMovie = arr.filter((movie) => year === movie.year).sort((itemA, itemB) => itemB.score - itemA.score);
   
-  
-  
-  console.log("EXERCISE 8 ->", bestMovie);
+  console.log("EXERCISE 8 ->", [bestMovie[0]]);
 
-  return bestMovie
+  return [bestMovie[0]]
 }
-
 
 
 // The following is required to make unit tests work.
