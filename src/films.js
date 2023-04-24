@@ -97,15 +97,13 @@ function hoursToMinutes(arr) {
   const getDuration = arr.map((item) => {
 
       const hour = parseInt(item.duration.split("h")[0]) * 60;
-      const min = parseInt(item.duration.split(" ")[1]).replace("min", "");
+      const min = parseInt(item.duration.split(" ")[1]) || 0;
       
-      const totalMinutes = hour + min;
-
-      return totalMinutes;
+      return { ...item, duration: hour + min };
       
   });
 
-  console.log("EXERCISE 7 ww->", getDuration);
+  console.log("EXERCISE 7 ->", getDuration);
 
   return getDuration;
 
