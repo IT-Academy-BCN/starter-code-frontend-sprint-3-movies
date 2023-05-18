@@ -1,3 +1,4 @@
+
 const movies = [
   {
     title: 'The Shawshank Redemption',
