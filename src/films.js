@@ -51,45 +51,7 @@ function moviesAverageByCategory(array,genre) {
 
 
 
-//Exercise 7: Modify the duration of movies to minutes
-/*function hoursToMinutes(array){
-  let result = []
-  let hours = 0
-  let minuts = 0
-  let minutsMovie = 0
-  //Itero el array de peliculas
-  let durations = array.map((movie) => movie.duration) //Hago un nuevo array con los tiempo de duracion de las peliculas
-  console.log(durations);
-  for(movie of array)
-  for(let time of durations){ //Extraigo las horas y minutos y las paso a número
-    hours = parseInt(time[0])
-    minuts = parseInt(time.slice(3,5))
-    minutsMovie = (hours * 60) + minuts //Paso todo a minutos
-  }
-
-  return result
-}*/
-// function hoursToMinutes(array){
-//   let result = []
-//   let durations = []
-//   let arrayMovies = []
-//   // let minuts = 0
-//   // let minutsMovie = 0
-//   let arrayDuration = array.map((movie) =>   movie.duration)
-//   durations.push(arrayDuration)
-
-//   for(let movie of array){
-//     const duration = movie.duration
-//     const hours = parseInt(duration[0])
-//     const minuts = parseInt(duration.slice(3,5))
-//     const minutsMovie = (hours * 60) + minuts
-//     movie.duration = minutsMovie
-//     result.push(movie)
-//     arrayMovies.push(movie)
-//   }
-//   return result
-// }
-
+  //Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes(array){
     return  array.map(movie => {
       const duration = movie.duration;
@@ -100,7 +62,7 @@ function hoursToMinutes(array){
       return { ...movie, duration: totalMinutes } ;
     });
 }
-hoursToMinutes([{duration:'2h'}])
+
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear(array,year) {
   let arrayMovies = []
