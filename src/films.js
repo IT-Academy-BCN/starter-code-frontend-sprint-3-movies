@@ -40,7 +40,7 @@ function orderByYear(array) {
 };
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+function moviesAverageByCategory(array,genre) {
   let movieGenre = array.filter(movie => movie.genre.includes(genre)).map(movie => movie.score)
   let valids = movieGenre.filter(value => typeof value === 'number');
   let totalScore = valids.reduce((acc,sig) => acc + sig)
@@ -56,16 +56,20 @@ function hoursToMinutes(array){
   let minuts = 0
   let minutsMovie = 0
   //Itero el array de peliculas
-  for(let movie of movies){
-    let duration = movie.duration
-    hours = parseInt(duration[0])
-    minuts = parseInt(duration.slice(3,5))
-    minutsMovie = (hours * 60) + minuts
-    movie.duration = minutsMovie
-    result.push(movie)
-  }
+  let durations = array.map(movie => movie.duration)
+
+  // for(let movie of durations){
+  //   let duration = movie.duration
+  //   hours = parseInt(duration[0])
+  //   minuts = parseInt(duration.slice(3,5))
+  //   minutsMovie = (hours * 60) + minuts
+  //   movie.duration = minutsMovie
+  //   result.push(movie)
+  // }
+  console.log(minutsMovie)
   return result
 }
+
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
