@@ -40,14 +40,12 @@ function orderByYear(array) {
 };
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory(array,genre) {
- 
+function moviesAverageByCategory() {
+
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
 
-}
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
