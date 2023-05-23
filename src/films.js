@@ -53,34 +53,26 @@ function moviesAverageByCategory(array,genre) {
 
   //Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes(array){
-    return  array.map(movie => {
-      const duration = movie.duration;
-      const [hoursString, minutesString] = duration.split('h').map(time => time.trim());
-      const hours = parseInt(hoursString)
-      const minutes = minutesString ? parseInt(minutesString) : 0;
-      const totalMinutes = (hours * 60) + minutes;
-      return { ...movie, duration: totalMinutes } ;
-    });
+
+  return  array.map(movie => {
+    const duration = movie.duration;
+    const [hoursString, minutesString] = duration.split('h').map(time => time.trim());
+    const hours = parseInt(hoursString)
+    const minutes = minutesString ? parseInt(minutesString) : 0;
+    const totalMinutes = (hours * 60) + minutes;
+    return { ...movie, duration: totalMinutes } ;
+  });
+
 }
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear(array,year) {
-  let arrayMovies = []
-  let moviesByYear = array.filter(movie => movie.year === year)
-  array.push(moviesByYear)
-  
-  
-  // let result = arrayMovies.reduce((bestMovie, movie) => {
-  //   if (movie.score > bestMovie.score) {
-  //     return movie;
-  //   } else {
-  //     return bestMovie;
-  //   }
-  // });
-  // return result;
+
+  let result = []
+  let bestMovie = array.filter(movie => movie.year === year).reduce((previusFilm,currentFilm) => currentFilm.score > previusFilm.score ? currentFilm : previusFilm)
+  result.push(bestMovie)
+  return result
 }
-
-
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
