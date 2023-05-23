@@ -72,6 +72,7 @@ function bestFilmOfYear(array,year) {
   let bestMovie = array.filter(movie => movie.year === year).reduce((previusFilm,currentFilm) => currentFilm.score > previusFilm.score ? currentFilm : previusFilm)
   result.push(bestMovie)
   return result
+  
 }
 
 // The following is required to make unit tests work.
