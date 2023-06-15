@@ -65,12 +65,14 @@ function hoursToMinutes(movies) {
     return movies.map(movie => ({
         ...movie,
         duration: convertDurationToMinutes(movie.duration),
-    }));}
+    }));
+}
 
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-
+function bestFilmOfYear(arr, year) {
+    const retVal= arr.filter(movie => movie.year === year).sort((a, b) => a.score>b.score)
+    return retVal.splice(1,retVal.length-2);
 }
 
 
