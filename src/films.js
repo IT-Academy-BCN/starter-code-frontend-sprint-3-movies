@@ -67,19 +67,30 @@ function moviesAverageByCategory(array, category) {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function convertHoursToMinutes(string) {
+function convertHoursToMinutes(duration) {
   // Remove ending only if string format is "xh yymin", not if it is "xh" or "xxh"
-  if (string.length <= 3) {
-    strResult = string.slice(0, -1);
-    strToMinute = parseInt(strResult) * 60;
-    return strToMinute;
-  } else {
-    const strRemovedEnding = string.slice(0, -3);
-    const strSplitted = strRemovedEnding.split('h ');
-    strSplitted[0] = strSplitted[0] * 60;
-    const strSum = parseInt(strSplitted[0]) + parseInt(strSplitted[1]);
-    return strSum;
+  // if (string.length <= 3) {
+  //   strResult = string.slice(0, -1);
+  //   strToMinute = parseInt(strResult) * 60;
+  //   return strToMinute;
+  // } else {
+  //   const strRemovedEnding = string.slice(0, -3);
+  //   const strSplitted = strRemovedEnding.split('h ');
+  //   strSplitted[0] = strSplitted[0] * 60;
+  //   const strSum = parseInt(strSplitted[0]) + parseInt(strSplitted[1]);
+  //   return strSum;
+  // }
+
+  let timeSplit = duration.split(' ');
+
+  const durationInHours = parseInt(duration.replace('h', ''));
+  const durationInMinutes = durationInHours * 60;
+
+  if (timeSplit.length > 1) {
+    const extraMinutes = parseInt(timeSplit[1].replace('min', ''));
+    durationInMinutes += extraMinutes;
   }
+  return durationInMinutes;
 }
 
 function hoursToMinutes(array) {
