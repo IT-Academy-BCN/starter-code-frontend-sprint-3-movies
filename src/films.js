@@ -31,16 +31,27 @@ function orderAlphabetically(array) {
   let orderMovies = array.map((movies) => movies.title);
   orderMovies = orderMovies.sort();
   const result4 = orderMovies.slice(0, 20);
-  console.log('EXERCISE 4 ->', result4);
+  console.log('EXERCICE 4 ->', result4);
   return result4;
 }
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {
+function orderByYear(array) {
+  let result5 = [...array];
+  result5.sort((a, b) => {
+    if (a.year !== b.year){
+      return a.year - b.year;
+    } else {
+      return a.title.localeCompare(b.title);
+    }
+  });
+  console.log("EXERCICE 5 ->", result5);
+  return result5;
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {}
+function moviesAverageByCategory(movies, genre) {
+}
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {}
