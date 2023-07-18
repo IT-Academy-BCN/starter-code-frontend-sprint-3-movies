@@ -37,6 +37,8 @@ En este ejercicio se ha reutilizado el ejrcicio 3 para crear una funcion que rec
 -A continuación debemos modificar el formato de duración de las películas para que se nos devuelva únicamente en minutos.
 Utilizamos un map() que nos devuelva un array con la duracion de las películas y a través de un for of con un condicional que convierte las horas en minutos y los suma para devolvernos el resultado de la duración en minutos.
 
+## NIVEL 3:
+
 ## EJERCICIO 8:
 -Debemos encontrar la mejor película de cada año.
 Utilizamos una función que recibe como parámetro el array de películas y el año elegido. Esta nos devuelve un array con los años fintrados y con sort() ordenados por puntuación.
