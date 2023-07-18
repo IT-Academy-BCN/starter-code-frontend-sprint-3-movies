@@ -83,11 +83,17 @@ function hoursToMinutes(movies) {
       duration: totalMinuts
     };
   });
+  console.log('EXERCICE 7 ->', minutsDuration);
   return minutsDuration;
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {}
+function bestFilmOfYear(movies, year) {
+  const movieOfYear = [movies.filter(movie => movie.year === year).sort((a, b) => b.score - a.score)[0]];
+  
+  console.log('EXERCICE 8 ->', movieOfYear);
+  return movieOfYear;
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
