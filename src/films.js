@@ -39,47 +39,49 @@ function orderAlphabetically(array) {
 function orderByYear(array) {
   let result5 = [...array];
   result5.sort((a, b) => {
-    if (a.year !== b.year){
+    if (a.year !== b.year) {
       return a.year - b.year;
     } else {
       return a.title.localeCompare(b.title);
     }
   });
-  console.log("EXERCICE 5 ->", result5);
+  console.log('EXERCICE 5 ->', result5);
   return result5;
 }
 
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory(movies, genre) {
-  const filteredArray = movies.filter(movies => movies.genre.includes(genre));
-  const scoreGenre = filteredArray.filter(movie => typeof movie.score === 'number');
-  if (scoreGenre.lenght === 0){
+  const filteredArray = movies.filter((movies) => movies.genre.includes(genre));
+  const scoreGenre = filteredArray.filter(
+    (movie) => typeof movie.score === 'number'
+  );
+  if (scoreGenre.lenght === 0) {
     return 0;
   }
   const result6 = scoreGenre.reduce(
-  (accumulator, genre) => accumulator + genre.score,
-  0
-);
-const averageScore = result6 / scoreGenre.length;
-console.log('EXERCICE 6 ->', averageScore);
-return Number(averageScore.toFixed(2));
+    (accumulator, genre) => accumulator + genre.score,
+    0
+  );
+  const averageScore = result6 / scoreGenre.length;
+  console.log('EXERCICE 6 ->', averageScore);
+  return Number(averageScore.toFixed(2));
 }
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes(movies) {
-  const minutsDuration = movies.map(movie => {
-    const durationParts = movie.duration.split(" ");
+  const minutsDuration = movies.map((movie) => {
+    const durationParts = movie.duration.split(' ');
     let totalMinuts = 0;
 
     for (const part of durationParts) {
-      if (part.includes("h")) {
+      if (part.includes('h')) {
         totalMinuts += parseInt(part) * 60;
-      } else if (part.includes("min")) {
+      } else if (part.includes('min')) {
         totalMinuts += parseInt(part);
       }
     }
     return {
-      ...movie, 
+      ...movie,
       duration: totalMinuts
     };
   });
@@ -89,8 +91,12 @@ function hoursToMinutes(movies) {
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear(movies, year) {
-  const movieOfYear = [movies.filter(movie => movie.year === year).sort((a, b) => b.score - a.score)[0]];
-  
+  const movieOfYear = [
+    movies
+      .filter((movie) => movie.year === year)
+      .sort((a, b) => b.score - a.score)[0]
+  ];
+
   console.log('EXERCICE 8 ->', movieOfYear);
   return movieOfYear;
 }
