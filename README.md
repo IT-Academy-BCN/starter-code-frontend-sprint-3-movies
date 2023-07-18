@@ -1,86 +1,50 @@
-# Sprint 4 IT Academy | Video management tool
+# Sprint 4 "MOVIES"
+# INTRODUCCION:
+-En este Sprint una empresa del sector audiovisual nos ha pedido una aplicación web, que permita a sus empleados encontrar rápidamente películas de una gran base de datos que poseen. El proceso se realiza actualmente de manera manual.
 
-## Introduction
+-Se nos proporciona la base del proyecto sobre el cual trabajar a través de GitHub. Es un array con 250 películas en un archico de JS. En el mismo cada elemento contiene la información de cada película
 
-A company in the audiovisual sector has asked us for a web application that will allow their employees to quickly find movies from a large database they have, since the process is currently done manually.
+# RESOLUCION DE LOS EJERCICIOS:
 
-You will be in charge of setting up the core of the application: all the logic of filtering and sorting of movies. You have 2 weeks to finish, which is how long this sprint lasts.
+## NIVEL 1:
+## EJERCICIO 1:
+-Se debe mostrar al usuario sólo los directores de las películas. 
+Se ha resuelto mediante la realización de un map que recorre el array movies y devuelve un nuevo array con únicamente los directores.
 
-<br>
+## EJERCICIO 2:
+-Se pide la posibilidad de mostrar todas las películas de determinado director.
+La función recibe un parámetro con el nombre del director y devuelve un array con sus películas. Se ha implementado el métodos filter().
 
-## Requirements
+## EJERCICIO 3:
+-Se pide calcular la media de las puntuaciones de las películas del director.
+Filtramos las películas de cada director y usamos el método reduce() para acumular las puntuaciones y a partir de esto calcular el porcentaje.
 
+## EJERCICIO 4: 
+-Debemos ordenar las películas por título en orden alfabético y obtener las primers 20 películas de la lista.
+Se crea una función en la cual utilizamos map para obtener todos los títulos de las películas y luego sort() para ordenarlas alfabéticamente. Luego utilizamos plit()para que el array no devuelva las primeras 20 películas de la lista.
 
-1. Clone this repo
-```bash
-$ git clone https://github.com/itacademyReact/starter-code-sprint4.git
-```
+## EJERCICIO 5:
+-En este ejercicio debemos ordenar las películas por año teniendo en cuenta que muchas películas tienen el año repetido. Por lo que en ese caso deben ir también por orden alfanético.
+Se resuelve utilizando nuevamente el método sort() y a continuación un condicional para que si el año es el mismo, se devuelva por orden alfabético.
 
-2. Unlink your repo from the itacademy repository
-```bash
-$ git remote rm origin
-```
+## EJERCICIO 6:
+-Hay que poder obtener la nota media de las películas de un genero determinado.
+En este ejercicio se ha reutilizado el ejrcicio 3 para crear una funcion que recibe un array de películas y calcule su media. Se uso typeof para asegurarnos de que devuelva un número y toFixed(2) para que sea con dos decimales.
 
-3. Link your repo to the repository you have to create in your github account
-```bash
-$ git remote add origin <your repo name!>
-```
+## NIVEL 2:
 
-<br>
+## EJERCICIO 7:
+-A continuación debemos modificar el formato de duración de las películas para que se nos devuelva únicamente en minutos.
+Utilizamos un map() que nos devuelva un array con la duracion de las películas y a través de un for of con un condicional que convierte las horas en minutos y los suma para devolvernos el resultado de la duración en minutos.
 
-## Submission
-
-1. Upon completion, run the following commands:
-
-```bash
-$ git add .
-$ git commit -m "Sprint Solution"
-$ git push origin master
-```
-
-2. Create Pull Request.
-
-3. Upload the link to the virtual campus so that your mentor can correct it and give you feedback.
-
+## EJERCICIO 8:
+-Debemos encontrar la mejor película de cada año.
+Utilizamos una función que recibe como parámetro el array de películas y el año elegido. Esta nos devuelve un array con los años fintrados y con sort() ordenados por puntuación.
 
 
-<br>
-
-## Introduction
-
-The statement of the exercise is available on the virtual campus.
-
-<br>
-
-## Tests!
 
 
-```shell
-$ npm install
-$ npm run test:watch
-```
 
-And last, open the generated `test-results.html` file with the "Live Server" VSCode extension to see test results.
 
-Apart from the statement, you will know exactly what you are asked to do by looking at the file `tests/films.spec.js`, all tests are already defined here!
-
-<br>
-
-## Instructions
-
-You have the following indications from the frontend responsible:
-
-- It is mandatory to implement all loops in ES6 (using map, reduce, filter and sort to manipulate arrays).
-
-- As at the moment we don't consume data from a server using an API, we will work with data from the src/data.js archive. For the moment we will implement the logic using
-an array of information about 250 movies.
-
-- The implementation is about processing this array of movies, to display it as requested in each exercise.
-
-- The logic to implement will be placed in the src/films.js file.
-
-- You don't need to show the result of each function on the screen. Your goal is to pass the tests.  More information on how to program oriented to pass tests at the end of the document.
-
-- Don't forget to include the capture of the test results in the virtual campus.
 
 
