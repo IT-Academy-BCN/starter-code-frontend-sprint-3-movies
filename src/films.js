@@ -54,13 +54,39 @@ function moviesAverageByCategory(array, category) {
 
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function hoursToMinutes(array) {
+  const newArray = array.map(changeDuration);
+  return newArray;
+}
 
+function changeDuration(film){
+  const time = film.duration.toString();
+  let hours = time.match(/\d+h/);
+  let minutes = time.match(/\d+min/);
+  let numHours = (hours !== null) ? hours[0].slice(0,1) : 0;
+  let numMins = (minutes !== null) ? minutes[0].slice(0,-3) : 0;
+  return {
+    ...film,
+    duration: (+(numHours) * 60) + +(numMins)
+  };
+  // Aplico solució amb object.assign perquè no supero el test de no modificació d'array original, 
+  // cosa que no entenc si map retorna un nou array. Tampoc entenc massa bé object.assign.
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+function bestFilmOfYear(array, year) {
+  const moviesYear = array.filter((film) => film.year == year);
+  const moviesYearBestFilm = moviesYear.sort((a,b) => {
+    if (b.score > a.score){
+      return 1;
+    } else if (b.score < a.score){
+      return -1;
+    }
+      return 0;
+  });
+  console.log(moviesYear);
+  console.log(moviesYearBestFilm);
+  return moviesYearBestFilm[0].title; 
 }
 
 
