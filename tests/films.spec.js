@@ -291,81 +291,8 @@ describe('Function "orderByYear"', () => {
 });
 
 // Exercise 6
-describe('Function "moviesAverageByCategory"', () => {
-  it('should be declared', () => {
-    expect(typeof moviesAverageByCategory).toBe('function');
-  });
+// YOUR CODE HERE. Test moviesAverageByCategory()
 
-  it('should return a number', () => {
-    expect(typeof moviesAverageByCategory(movies, 'Drama')).toBe('number');
-  });
-
-  it('should be different from NaN', () => {
-    expect(moviesAverageByCategory(movies, 'Drama')).not.toBeNaN();
-  });
-
-  it(' should return the average score of 2 movies with score 7 each, without decimals!', () => {
-    expect(moviesAverageByCategory([
-      {
-        score: 7,
-        genre: ['Drama'],
-      },
-      {
-        score: 7,
-        genre: ['Drama'],
-      }
-    ],
-      'Drama')).toBe(7);
-  });
-
-  it('should be rounded to 2 decimals places', () => {
-    expect(moviesAverageByCategory([
-      {
-        score: 7.75,
-        genre: ['Drama'],
-      },
-      {
-        score: 6,
-        genre: ['Drama'],
-      }
-    ],
-      'Drama')).toBe(6.88);
-  });
-
-  it('should not take into consideration films of other category', () => {
-    expect(moviesAverageByCategory([
-      {
-        score: 5,
-        genre: ['Drama'],
-      },
-      {
-        score: 10,
-        genre: ['Action'],
-      },
-      {
-        score: 10,
-        genre: ['Action'],
-      }
-    ],
-      'Action')).toBe(10);
-  });
-
-
-  it('should return average even if one of the movies does not have score', () => {
-    expect(moviesAverageByCategory([
-      {
-        score: 5,
-        genre: ['Action'],
-      },
-      {
-        score: '',
-        genre: ['Action'],
-      }
-    ],
-      'Action')).toBe(5);
-  });
-
-});
 
 // Exercise 7
 describe('Function "hoursToMinutes"', () => {
