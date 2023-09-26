@@ -1,4 +1,4 @@
-# Sprint 4 IT Academy | Video management tool
+# Sprint 3 IT Academy | Video management tool
 
 ## Introduction
 
