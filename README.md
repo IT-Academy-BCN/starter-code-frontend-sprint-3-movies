@@ -13,7 +13,7 @@ You will be in charge of setting up the core of the application: all the logic o
 
 1. Clone this repo
 ```bash
-$ git clone https://github.com/itacademyReact/starter-code-sprint4.git
+$ git clone https://github.com/IT-Academy-BCN/starter-code-frontend-sprint-3-movies
 ```
 
 2. Unlink your repo from the itacademy repository
