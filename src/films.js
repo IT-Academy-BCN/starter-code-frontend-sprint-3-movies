@@ -91,7 +91,13 @@ function convertToMinutes(hour, minutes) {
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {}
+function bestFilmOfYear(array, year) {
+  let filterByYear = array.filter((film) => film.year === year);
+  let bestScore = filterByYear.reduce((film, best) => {
+    return film.score > best.score ? film : best;
+  }, array[0]);
+  return [bestScore];
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
