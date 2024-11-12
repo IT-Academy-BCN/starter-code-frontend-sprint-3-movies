@@ -16,14 +16,20 @@ function moviesAverageOfDirector(array, director) {
     (total, item) => total + item.score,
     0
   );
-  console.log(sum);
+
   return parseFloat(
     (sum / getMoviesFromDirector(array, director).length).toFixed(2)
   );
 }
 
 // Exercise 4:  Alphabetic order by title
-function orderAlphabetically(array) {}
+function orderAlphabetically(array) {
+  return array
+    .slice()
+    .sort((a, b) => a.title.localeCompare(b.title))
+    .slice(0, 20)
+    .map((item) => item.title);
+}
 
 // Exercise 5: Order by year, ascending
 function orderByYear() {}
