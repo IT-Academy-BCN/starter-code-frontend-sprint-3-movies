@@ -49,4 +49,4 @@ This project consists of JavaScript functions to perform various operations on a
   npm run test:watch
 ```
 
-After the tests are complete, you can view the generated test results by opening http://localhost:5500/test-results.html in your browser.
+After the tests are complete, you can view the generated test results by opening test-results.html in your browser.
