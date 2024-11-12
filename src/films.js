@@ -42,7 +42,18 @@ function orderByYear(array) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {}
+function moviesAverageByCategory(array, category) {
+  let sum = 0;
+  let count = 0;
+  array.forEach((item) => {
+    let genreExist = item.genre.some((g) => g === category);
+    if (genreExist) {
+      sum += item.score;
+      count++;
+    }
+  });
+  return sum / count;
+}
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {}
