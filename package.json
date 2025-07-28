@@ -23,7 +23,8 @@
           "includeFailureMsg": true,
           "includeConsoleLog": true
         }
-      ]
+      ],
+      "jest-junit"
     ]
   },
   "jest-junit": {
